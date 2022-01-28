@@ -10,7 +10,7 @@
 template<typename T>
 __inline void* r_luaM_new_(const T rL, const std::size_t nsize, const std::uint8_t memcat)
 {
-    const auto g = r_GGS(rL);
+    const auto g = r_G(rL);
     const auto ud = *reinterpret_cast<std::uintptr_t*>(g + globalstate_ud);
 
     auto nclass = r_sizeclass(nsize);
@@ -29,7 +29,7 @@ __inline void* r_luaM_new_(const T rL, const std::size_t nsize, const std::uint8
 template<typename T>
 __inline void r_luaM_free_(const T rL, void* block, const std::size_t osize, const std::uint8_t memcat)
 {
-    const auto g = r_GGS(rL);
+    const auto g = r_G(rL);
     const auto ud = *reinterpret_cast<std::uintptr_t*>(g + globalstate_ud);
 
     auto oclass = r_sizeclass(osize);
@@ -46,7 +46,7 @@ __inline void r_luaM_free_(const T rL, void* block, const std::size_t osize, con
 template<typename T>
 __inline void* r_luaM_realloc_(const T rL, void* block, const std::size_t osize, const std::size_t nsize, const std::uint8_t memcat)
 {
-    const auto g = r_GGS(rL);
+    const auto g = r_G(rL);
     const auto ud = *reinterpret_cast<std::uintptr_t*>(g + globalstate_ud);
 
     auto nclass = r_sizeclass(nsize);
